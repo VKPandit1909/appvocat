@@ -41,7 +41,7 @@ io.on("connection", (socket) => {
 
     // Chat
     socket.on("message", (data) => {
-        console.log(data);
+//         console.log(data);
         let targetId = data.targetId;
         if(clients[targetId]) clients[targetId].emit("message", data);
     });
