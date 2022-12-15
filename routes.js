@@ -1,7 +1,8 @@
 const express = require("express");
 let router = express.Router();
-const fileUploads = require("./routes/fileUpload");
 
+
+const fileUploads = require("./routes/fileUpload");
 router.post('/addImage', fileUploads, (req, res) => {
     try {
         console.log(req.files[0]);
@@ -12,5 +13,8 @@ router.post('/addImage', fileUploads, (req, res) => {
     }
     
 });
+
+const user = require("./routes/auth/index");
+router.use('/user', user);
 
 module.exports = router;

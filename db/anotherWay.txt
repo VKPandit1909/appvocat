@@ -1,0 +1,46 @@
+
+var mysql = require("mysql");
+// Database Connectivity
+var conn = mysql.createPool({
+  host: "162.214.80.31",
+  port: "3306",
+  user: "idgvhtmy_admin",
+  password: "#Lz*(+oaExW%",
+  database: "idgvhtmy_janki",
+  charset: "utf8mb4",
+});
+// conn.connect(function (err) {
+//   if (err) throw err;
+//   console.log("Connected!");
+// });
+
+module.exports = conn;
+
+
+
+
+
+
+
+
+
+var mysql = require('mysql');
+var pool  = mysql.createPool({
+  connectionLimit : 10,
+  host            : 'localhost',
+  user            : 'root',
+  password        : ''
+});
+
+pool.getConnection(function(err, connection) {
+    connection.query( 'SELECT something FROM sometable', function(err, rows) {
+
+      console.log(pool._freeConnections.indexOf(connection)); // -1
+
+      connection.release();
+
+      console.log(pool._freeConnections.indexOf(connection)); // 0
+
+   });
+});
+

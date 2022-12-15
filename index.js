@@ -13,6 +13,14 @@ app.use(cors());
 app.use(bodyParser.json({ limit: "50mb" })); // for parsing application/json
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
+// Routing
+const routes = require("./routes");
+app.use("/routes", routes);
+
+// Public Uploads
+app.use("/uploads", express.static("uploads"));
+
+
 // Socket IO Initialization
 var server = http.createServer(app);
 var io = require("socket.io")(server, {
@@ -20,13 +28,6 @@ var io = require("socket.io")(server, {
         "origin": "*"
     }
 });
-
-// Routing
-const routes = require("./routes");
-app.use("/routes", routes);
-
-// Public Uploads
-app.use("/uploads", express.static("uploads"));
 
 var clients = {};
 // Socket IO Implementation
