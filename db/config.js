@@ -1,10 +1,14 @@
 var mysql = require('mysql');
+
+// ENVIRONMENT VARIABLES
+require("dotenv").config();
+
 var pool  = mysql.createPool({
-  host: "62.171.173.184",
-  port: "3306",
-  user: "phpmyadmin",
-  password: "vnw6!eHL",
-  database: "appvocat",
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
   charset: "utf8mb4",
 });
 
